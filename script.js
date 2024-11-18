@@ -19,4 +19,4 @@ function createElementsWithClass(n1, n2, className1, className2) {
 }
 
 
-createElementsWithClass(16, 16, 'grid-y', 'grid-x');
+createElementsWithClass(50, 50, 'grid-y', 'grid-x');
