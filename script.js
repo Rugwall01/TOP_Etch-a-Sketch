@@ -8,7 +8,7 @@ function createElementsWithClass(n, className) {
 
         element.classList.add(className);
 
-        document.body.appendChild(element);
+        body.appendChild(element);
     }
 }
 
