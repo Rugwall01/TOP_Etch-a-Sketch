@@ -4,7 +4,7 @@ const body = document.querySelector("body");
 
 function createElementsWithClass(n, className) {
     for(let i = 0; i < n; i++){
-        const element = createElement('div');
+        const element = document.createElement('div');
 
         element.classList.add(className);
 
