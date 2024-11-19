@@ -36,14 +36,14 @@ container.addEventListener('mouseup', () => {
 divs.forEach(div => {
     
     div.addEventListener('mouseover', (e) => {
-        if(!mouseDown){
+        if(!mouseDown && e.target.style.backgroundColor !== "black"){
             const target = e.target
             target.style.backgroundColor = "lightblue";
         }
     })
 
     div.addEventListener('mouseout', (e) => {
-        if(!mouseDown){
+        if(!mouseDown && e.target.style.backgroundColor !== "black"){
             const target = e.target
             target.style.backgroundColor = "";
         }
