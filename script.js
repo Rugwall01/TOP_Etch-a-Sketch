@@ -21,7 +21,7 @@ function createElementsWithClass(n1, n2, className1, className2) {
 
 createElementsWithClass(50, 50, 'grid-y', 'grid-x');
 
-const divs = document.querySelectorAll('div');
+const divs = document.querySelectorAll('[class^="grid-x"]');
 
 divs.forEach(div => {
 
@@ -30,4 +30,11 @@ div.addEventListener('mouseover', (e) => {
     target.style.backgroundColor = "lightblue";
 
 })
+})
+
+divs.forEach(div => {
+    div.addEventListener('mouseout', (e) => {
+        target = e.target
+        target.style.backgroundColor = "";
+    })
 })
