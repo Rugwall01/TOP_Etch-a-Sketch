@@ -1,5 +1,6 @@
 
 const body = document.querySelector("body");
+const container = document.querySelector("#div-container");
 
 
 function createElementsWithClass(n1, n2, className1, className2) {
@@ -14,11 +15,11 @@ function createElementsWithClass(n1, n2, className1, className2) {
 
             elementY.appendChild(elementX);
         }
-        body.appendChild(elementY);
+        container.appendChild(elementY);
     }
 }
 
-createElementsWithClass(375, 375, 'grid-y', 'grid-x');
+createElementsWithClass(50, 50, 'grid-y', 'grid-x');
 
 const divs = document.querySelectorAll('div');
 
