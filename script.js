@@ -18,5 +18,15 @@ function createElementsWithClass(n1, n2, className1, className2) {
     }
 }
 
+createElementsWithClass(375, 375, 'grid-y', 'grid-x');
 
-createElementsWithClass(50, 50, 'grid-y', 'grid-x');
+const divs = document.querySelectorAll('div');
+
+divs.forEach(div => {
+
+div.addEventListener('mouseover', (e) => {
+    target = e.target
+    target.style.backgroundColor = "lightblue";
+
+})
+})
