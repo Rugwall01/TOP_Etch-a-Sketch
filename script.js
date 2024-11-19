@@ -25,10 +25,10 @@ function createElementsWithClass(n1, n2, className1, className2) {
     }
 }
 function removeDivElementsByClass() {
-    const elementsX = document.querySelectorAll(`[class^="grid-x"]`);
-    const elementsY = document.querySelectorAll(`[class^="grid-y"]`);
+    /*let  elementsX = document.querySelectorAll(`[class^="grid-x"]`);*/
+    let  elementsY = document.querySelectorAll(`[class^="grid-y"]`);
 
-    elementsX.forEach(element => element.remove());
+    /*elementsX.forEach(element => element.remove());*/
     elementsY.forEach(element => element.remove());
 
 }
@@ -81,7 +81,7 @@ container.addEventListener('mouseup', () => {
     })
     
 
-divs.forEach(div => {
+/*divs.forEach(div => {
     
     div.addEventListener('mouseover', (e) => {
         if(!mouseDown && e.target.style.backgroundColor !== "black"){
@@ -109,4 +109,35 @@ divs.forEach(div => {
         }
     })
 
-})
+})*/
+
+
+    
+    container.addEventListener('mouseover', (e) => {
+        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== "black"){
+            const target = e.target
+            target.style.backgroundColor = "lightblue";
+        }
+    })
+
+    container.addEventListener('mouseout', (e) => {
+        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== "black"){
+            const target = e.target
+            target.style.backgroundColor = "";
+        }
+    })
+
+    container.addEventListener('mousedown', (e) => {
+        if(e.target.classList.contains('grid-x')){
+        const target = e.target
+        target.style.backgroundColor = "black";
+        }
+    })  
+
+    container.addEventListener('mouseenter', (e) => {
+        if(e.target.classList.contains('grid-x') && mouseDown){
+            const target = e.target
+            target.style.backgroundColor = "black";
+        }
+    })
+
