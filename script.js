@@ -2,6 +2,12 @@
 const body = document.querySelector("body");
 const container = document.querySelector("#div-container");
 
+const userInput = document.getElementsByName("user-input")[0];
+const generate = document.querySelector("#szBtn");
+const label = document.querySelector("label");
+
+
+
 
 function createElementsWithClass(n1, n2, className1, className2) {
     for(let i = 0; i < n1; i++){
@@ -19,7 +25,34 @@ function createElementsWithClass(n1, n2, className1, className2) {
     }
 }
 
-createElementsWithClass(50, 50, 'grid-y', 'grid-x');
+document.addEventListener('DOMContentLoaded', () => {
+    alert("Enter a number between 1 and 100 in the field above the box");
+})
+
+function generateGrid() {
+    if(userInput.value){
+        if(isNaN(userInput.value)){
+            userInput.value = '';
+            alert("Enter a valid number");
+        }else{
+            let input = Number(userInput.value);
+            if(input < 1 || input > 100) {
+                alert("Enter a number between 1 and 100");
+            }else{
+                createElementsWithClass(Number(input), Number(input), 'grid-y', 'grid-x');
+
+            }
+        } 
+    }
+}
+
+generate.addEventListener('Click', () => {
+    generateGrid();
+
+})
+    
+    
+
 
 const divs = document.querySelectorAll('[class^="grid-x"]');
 
