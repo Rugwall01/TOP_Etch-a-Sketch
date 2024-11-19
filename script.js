@@ -24,6 +24,19 @@ function createElementsWithClass(n1, n2, className1, className2) {
         container.appendChild(elementY);
     }
 }
+function removeDivElementsByClass() {
+    const elementsX = document.querySelectorAll(`[class^="grid-x"]`);
+    const elementsY = document.querySelectorAll(`[class^="grid-y"]`);
+
+    elementsX.forEach(element => element.remove());
+    elementsY.forEach(element => element.remove());
+
+}
+
+function clearGrid() {
+    removeDivElementsByClass();
+
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     alert("Enter a number between 1 and 100 in the field above the box");
@@ -46,7 +59,8 @@ function generateGrid() {
     }
 }
 
-generate.addEventListener('Click', () => {
+generate.addEventListener('click', () => {
+    clearGrid();
     generateGrid();
 
 })
@@ -65,6 +79,7 @@ container.addEventListener('mousedown', () => {
 container.addEventListener('mouseup', () => {
         mouseDown = false
     })
+    
 
 divs.forEach(div => {
     
