@@ -23,18 +23,42 @@ createElementsWithClass(50, 50, 'grid-y', 'grid-x');
 
 const divs = document.querySelectorAll('[class^="grid-x"]');
 
-divs.forEach(div => {
+let mouseDown = false 
 
-div.addEventListener('mouseover', (e) => {
-    target = e.target
-    target.style.backgroundColor = "lightblue";
-
-})
-})
-
-divs.forEach(div => {
-    div.addEventListener('mouseout', (e) => {
-        target = e.target
-        target.style.backgroundColor = "";
+container.addEventListener('mousedown', () => {
+        mouseDown = true
     })
+
+container.addEventListener('mouseup', () => {
+        mouseDown = false
+    })
+
+divs.forEach(div => {
+    
+    div.addEventListener('mouseover', (e) => {
+        if(!mouseDown){
+            const target = e.target
+            target.style.backgroundColor = "lightblue";
+        }
+    })
+
+    div.addEventListener('mouseout', (e) => {
+        if(!mouseDown){
+            const target = e.target
+            target.style.backgroundColor = "";
+        }
+    })
+
+    div.addEventListener('mousedown', (e) => {
+        const target = e.target
+        target.style.backgroundColor = "black";
+    })  
+
+    div.addEventListener('mouseenter', (e) => {
+        if(mouseDown){
+            const target = e.target
+            target.style.backgroundColor = "black";
+        }
+    })
+
 })
