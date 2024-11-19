@@ -8,7 +8,6 @@ const label = document.querySelector("label");
 
 
 
-
 function createElementsWithClass(n1, n2, className1, className2) {
     for(let i = 0; i < n1; i++){
         const elementY = document.createElement('div');
@@ -134,10 +133,22 @@ container.addEventListener('mouseup', () => {
         }
     })  
 
-    container.addEventListener('mouseenter', (e) => {
-        if(e.target.classList.contains('grid-x') && mouseDown){
+    
+    divs.forEach((div) => {
+        div.addEventListener('mouseover', (e) => {
+            if(mouseDown){
+                const target = e.target
+                target.style.backgroundColor = "black";
+            }
+        })
+
+    })
+    
+    container.addEventListener('mouseover', (e) => {
+        if(mouseDown && e.target.classList.contains('grid-x')){
             const target = e.target
             target.style.backgroundColor = "black";
         }
     })
+    
 
