@@ -28,10 +28,9 @@ function createElementsWithClass(n1, n2, className1, className2) {
     }
 }
 function removeDivElementsByClass() {
-    /*let  elementsX = document.querySelectorAll(`[class^="grid-x"]`);*/
+    
     let  elementsY = document.querySelectorAll(`[class^="grid-y"]`);
 
-    /*elementsX.forEach(element => element.remove());*/
     elementsY.forEach(element => element.remove());
 
 }
@@ -83,9 +82,6 @@ generate.addEventListener('click', () => {
     generateGrid();
 
 })
-    
-    
-
 
 const divs = document.querySelectorAll('[class^="grid-x"]');
 
@@ -99,37 +95,6 @@ window.addEventListener('mouseup', () => {
         mouseDown = false
         
     })
-    
-
-/*divs.forEach(div => {
-    
-    div.addEventListener('mouseover', (e) => {
-        if(!mouseDown && e.target.style.backgroundColor !== "black"){
-            const target = e.target
-            target.style.backgroundColor = "lightblue";
-        }
-    })
-
-    div.addEventListener('mouseout', (e) => {
-        if(!mouseDown && e.target.style.backgroundColor !== "black"){
-            const target = e.target
-            target.style.backgroundColor = "";
-        }
-    })
-
-    div.addEventListener('mousedown', (e) => {
-        const target = e.target
-        target.style.backgroundColor = "black";
-    })  
-
-    div.addEventListener('mouseenter', (e) => {
-        if(mouseDown){
-            const target = e.target
-            target.style.backgroundColor = "black";
-        }
-    })
-
-})*/
 
 container.addEventListener('mousedown', (e) => {
     if(e.target.classList.contains('grid-x')){
@@ -139,30 +104,6 @@ container.addEventListener('mousedown', (e) => {
     }
 })  
     
-    /*container.addEventListener('mouseover', (e) => {
-        if(e.target.style.backgroundColor.value === colorInput.value && e.target.classList.contains('grid-x') && !mouseDown){
-            e.target.style.backgroundColor = colorInput.value;   
-
-        }else if(e.target.classList.contains('grid-x') && !mouseDown && (getComputedStyle(e.target).backgroundColor !== colorInput.value)){
-            /*const currentColor = getComputedStyle(e.target).backgroundColor;
-            const selectedColor = colorInput.value;
-            if (currentColor !== selectedColor) {*/
-                
-                //e.target.style.backgroundColor = "lightblue";
-            //}
-        /*}
-    })
-      //BELOW IS FOR DRAG FILL HAD TO USE MOUSEOVER INSTEAD OF MOUSENTER BECAUSE OF BUBBLING
-      container.addEventListener('mouseover', (e) => {
-        if(mouseDown && e.target.classList.contains('grid-x')){
-            const target = e.target
-            target.style.backgroundColor = colorInput.value ;
-        }
-    }*/
-    
-
-
-
     container.addEventListener('mouseover', (e) => {
         if (!mouseDown && e.target.classList.contains('grid-x') && e.target.dataset.isPainted !== "true") {
             e.target.style.backgroundColor = "lightblue";
@@ -173,11 +114,6 @@ container.addEventListener('mousedown', (e) => {
     });
 
     container.addEventListener('mouseout', (e) => {
-        /*if(e.target.style.backgroundColor.value === colorInput.value && e.target.classList.contains('grid-x') && !mouseDown){
-            e.target.style.backgroundColor = colorInput.value;
-
-        }*/
-        
         if(e.target.classList.contains('grid-x') && !mouseDown && e.target.dataset.isPainted !== "true"){
             /*const currentColor = getComputedStyle(e.target).backgroundColor;
             const selectedColor = colorInput.value;
@@ -191,14 +127,5 @@ container.addEventListener('mousedown', (e) => {
    
 
     
-    /*divs.forEach((div) => {
-        div.addEventListener('mouseover', (e) => {
-            if(mouseDown){
-                const target = e.target
-                target.style.backgroundColor = colorInput.value ;
-            }
-        })
-
-    })*/
-  
+   
 
