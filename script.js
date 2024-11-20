@@ -10,6 +10,9 @@ const colorLabel = document.querySelector("#colorLabel");
 let colorInput = document.querySelector("#chooseColor");
 const darkenLabel = document.querySelector("#darkenLabel");
 const darkenInput = document.querySelector("#chooseFade");
+const eraseLabel = document.querySelector("#eraseLabel");
+const eraseInput = document.querySelector("#erase");
+
 
 
 function createElementsWithClass(n1, n2, className1, className2) {
@@ -113,8 +116,11 @@ container.addEventListener('mousedown', (e) => {
                 e.target.style.opacity = String((Number(e.target.style.opacity) + 0.1));  
             }
         }
-    
-
+    }
+    if(eraseInput.checked && e.target.classList.contains('grid-x')) {
+        e.target.style.backgroundColor = "";
+        e.target.style.opacity = "1";
+        e.target.dataset.isPainted = "false";
     }
 })  
     
@@ -139,6 +145,11 @@ container.addEventListener('mousedown', (e) => {
                 }
                 
             }
+        }
+        if(eraseInput.checked && e.target.classList.contains('grid-x') && mouseDown) {
+            e.target.style.backgroundColor = "";
+            e.target.style.opacity = "1";
+            e.target.dataset.isPainted = "false";
         }
     });
 
