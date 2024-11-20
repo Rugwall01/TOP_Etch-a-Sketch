@@ -6,6 +6,10 @@ const userInput = document.getElementsByName("user-input")[0];
 const generate = document.querySelector("#szBtn");
 const label = document.querySelector("label");
 
+const colorLabel = document.querySelector("#colorLabel");
+let colorInput = document.querySelector("#chooseColor");
+const darkenLabel = document.querySelector("#darkenLabel");
+const darkenInput = document.getElementsByName("darkenSelect");
 
 
 function createElementsWithClass(n1, n2, className1, className2) {
@@ -37,7 +41,19 @@ function clearGrid() {
 
 }
 
+function generateRandomColor() {
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += Math.floor(Math.random() * 16).toString(16);
+    }
+    return color;
+  }
+  
+ 
+
 document.addEventListener('DOMContentLoaded', () => {
+    colorInput.value = generateRandomColor();
+    
     alert("Enter a number between 1 and 100 in the field above the box");
 })
 
@@ -113,14 +129,14 @@ container.addEventListener('mouseup', () => {
 
     
     container.addEventListener('mouseover', (e) => {
-        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== "black"){
+        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== colorInput.value){
             const target = e.target
             target.style.backgroundColor = "lightblue";
         }
     })
 
     container.addEventListener('mouseout', (e) => {
-        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== "black"){
+        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== colorInput.value){
             const target = e.target
             target.style.backgroundColor = "";
         }
@@ -129,25 +145,25 @@ container.addEventListener('mouseup', () => {
     container.addEventListener('mousedown', (e) => {
         if(e.target.classList.contains('grid-x')){
         const target = e.target
-        target.style.backgroundColor = "black";
+        target.style.backgroundColor = colorInput.value ;
         }
     })  
 
     
-    divs.forEach((div) => {
+    /*divs.forEach((div) => {
         div.addEventListener('mouseover', (e) => {
             if(mouseDown){
                 const target = e.target
-                target.style.backgroundColor = "black";
+                target.style.backgroundColor = colorInput.value ;
             }
         })
 
-    })
+    })*/
     
     container.addEventListener('mouseover', (e) => {
         if(mouseDown && e.target.classList.contains('grid-x')){
             const target = e.target
-            target.style.backgroundColor = "black";
+            target.style.backgroundColor = colorInput.value ;
         }
     })
     

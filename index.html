@@ -6,7 +6,7 @@
         <title>Etch-a-Sketch Project TOP</title> 
         <script src="script.js" defer></script>
         <style>
-            body{
+            body {
                 display: flex;
                 align-items: center;
                 flex-direction: column;
@@ -28,7 +28,7 @@
             [class^="grid-y"] {
                 display: flex;
                 flex-direction: row;
-                border: 1px solid black;
+                /*border: 1px solid black;*/
                 justify-content: stretch;
                 flex:auto;
                 width: 960px;
@@ -36,19 +36,22 @@
 
             .grid-x {
                 margin: 0;
-                border: 1px solid black;
+                /*border: 1px solid black;*/
                 flex: auto;
                 
             }
         </style>
     </head>
     <body>
-        <div id="grid-size">
-            <label for="user-input">Input Grid-Size with a single number up to 100</label>
-            <input type="text" name="user-input">
-            <button id="szBtn">Generate</button>
-        </div>
-        <div id="div-container"></div>
-
+            <div id="grid-size">
+                <label for="user-input">Input Grid-Size with a single number up to 100</label>
+                <input type="text" name="user-input">
+                <button id="szBtn">Generate</button>
+                <label id="colorLabel" for="colorSelect">Select Color (default: random)</label>
+                <input id= "chooseColor" type="color" name="colorSelect">
+                <label id="darkenLabel" for="darkenSelect">Lighter to Darker?</label>
+                <input id="chooseFade" type="checkbox" name="darkenSelect">
+            </div>
+            <div id="div-container"></div>
     </body>
 </html>
