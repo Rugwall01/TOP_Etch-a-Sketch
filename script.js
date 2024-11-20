@@ -130,15 +130,23 @@ container.addEventListener('mouseup', () => {
     
     container.addEventListener('mouseover', (e) => {
         if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== colorInput.value){
-            const target = e.target
-            target.style.backgroundColor = "lightblue";
+            const currentColor = getComputedStyle(e.target).backgroundColor;
+            const selectedColor = colorInput.value;
+            if (currentColor !== selectedColor) {
+                const target = e.target
+                target.style.backgroundColor = "lightblue";
+            }
         }
     })
 
     container.addEventListener('mouseout', (e) => {
         if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== colorInput.value){
-            const target = e.target
-            target.style.backgroundColor = "";
+            const currentColor = getComputedStyle(e.target).backgroundColor;
+            const selectedColor = colorInput.value;
+            if (currentColor !== selectedColor) {
+                const target = e.target
+                target.style.backgroundColor = "";
+            }
         }
     })
 
