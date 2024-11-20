@@ -9,7 +9,7 @@ const label = document.querySelector("label");
 const colorLabel = document.querySelector("#colorLabel");
 let colorInput = document.querySelector("#chooseColor");
 const darkenLabel = document.querySelector("#darkenLabel");
-const darkenInput = document.getElementsByName("darkenSelect");
+const darkenInput = document.querySelector("#chooseFade");
 
 
 function createElementsWithClass(n1, n2, className1, className2) {
@@ -97,10 +97,24 @@ window.addEventListener('mouseup', () => {
     })
 
 container.addEventListener('mousedown', (e) => {
-    if(e.target.classList.contains('grid-x')){
+    if(e.target.classList.contains('grid-x') && e.target.dataset.isPainted !== "true"){
     
         e.target.style.backgroundColor = colorInput.value;
         e.target.dataset.isPainted = "true";
+    }
+    if(darkenInput.checked) {
+        if(e.target.classList.contains('grid-x') && e.target.dataset.isPainted !== "true"){
+            e.target.style.backgroundColor = colorInput.value;
+            e.target.style.opacity = "0.1";
+            e.target.dataset.isPainted = "true";
+        }
+        if(e.target.classList.contains('grid-x') && e.target.dataset.isPainted === "true") {
+            if(Number(e.target.style.opacity) < 1.0){
+                e.target.style.opacity = String((Number(e.target.style.opacity) + 0.1));  
+            }
+        }
+    
+
     }
 })  
     
@@ -109,7 +123,22 @@ container.addEventListener('mousedown', (e) => {
             e.target.style.backgroundColor = "lightblue";
         } else if (mouseDown && e.target.classList.contains('grid-x')) {
             e.target.style.backgroundColor = colorInput.value;
-            e.target.dataset.isPainted = "true"; // Mark as painted
+            e.target.dataset.isPainted = "true";
+        }
+        if(darkenInput.checked) {
+            if (!mouseDown && e.target.classList.contains('grid-x') && e.target.dataset.isPainted !== "true") {
+                e.target.style.backgroundColor = "lightblue";
+            } else if (mouseDown && e.target.classList.contains('grid-x') && e.target.dataset.isPainted !== "true") {
+                e.target.style.backgroundColor = colorInput.value;
+                e.target.style.opacity = "0.1";
+                e.target.dataset.isPainted = "true";
+            }
+            if(e.target.classList.contains('grid-x') && e.target.dataset.isPainted === "true" && mouseDown) {
+                if(Number(e.target.style.opacity) < 1.0){
+                    e.target.style.opacity = String((Number(e.target.style.opacity) + 0.1));  
+                }
+                
+            }
         }
     });
 
@@ -118,6 +147,14 @@ container.addEventListener('mousedown', (e) => {
                 e.target.style.backgroundColor = "";
         }
     })
+
+
+    
+
+
+
+
+
 
    
 
