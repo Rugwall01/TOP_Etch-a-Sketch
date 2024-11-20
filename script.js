@@ -46,15 +46,19 @@ function generateRandomColor() {
     for (let i = 0; i < 6; i++) {
       color += Math.floor(Math.random() * 16).toString(16);
     }
-    return color;
+
+    colorInput.value = color;
+    return;
   }
   
  
 
 document.addEventListener('DOMContentLoaded', () => {
-    colorInput.value = generateRandomColor();
+    generateRandomColor();
+    createElementsWithClass(2, 2, 'grid-y', 'grid-x');
     
     alert("Enter a number between 1 and 100 in the field above the box");
+    return;
 })
 
 function generateGrid() {
@@ -91,8 +95,9 @@ container.addEventListener('mousedown', () => {
         mouseDown = true
     })
 
-container.addEventListener('mouseup', () => {
+window.addEventListener('mouseup', () => {
         mouseDown = false
+        
     })
     
 
@@ -126,36 +131,64 @@ container.addEventListener('mouseup', () => {
 
 })*/
 
-
+container.addEventListener('mousedown', (e) => {
+    if(e.target.classList.contains('grid-x')){
     
-    container.addEventListener('mouseover', (e) => {
-        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== colorInput.value){
-            const currentColor = getComputedStyle(e.target).backgroundColor;
+        e.target.style.backgroundColor = colorInput.value;
+        e.target.dataset.isPainted = "true";
+    }
+})  
+    
+    /*container.addEventListener('mouseover', (e) => {
+        if(e.target.style.backgroundColor.value === colorInput.value && e.target.classList.contains('grid-x') && !mouseDown){
+            e.target.style.backgroundColor = colorInput.value;   
+
+        }else if(e.target.classList.contains('grid-x') && !mouseDown && (getComputedStyle(e.target).backgroundColor !== colorInput.value)){
+            /*const currentColor = getComputedStyle(e.target).backgroundColor;
             const selectedColor = colorInput.value;
-            if (currentColor !== selectedColor) {
-                const target = e.target
-                target.style.backgroundColor = "lightblue";
-            }
-        }
+            if (currentColor !== selectedColor) {*/
+                
+                //e.target.style.backgroundColor = "lightblue";
+            //}
+        /*}
     })
+      //BELOW IS FOR DRAG FILL HAD TO USE MOUSEOVER INSTEAD OF MOUSENTER BECAUSE OF BUBBLING
+      container.addEventListener('mouseover', (e) => {
+        if(mouseDown && e.target.classList.contains('grid-x')){
+            const target = e.target
+            target.style.backgroundColor = colorInput.value ;
+        }
+    }*/
+    
+
+
+
+    container.addEventListener('mouseover', (e) => {
+        if (!mouseDown && e.target.classList.contains('grid-x') && e.target.dataset.isPainted !== "true") {
+            e.target.style.backgroundColor = "lightblue";
+        } else if (mouseDown && e.target.classList.contains('grid-x')) {
+            e.target.style.backgroundColor = colorInput.value;
+            e.target.dataset.isPainted = "true"; // Mark as painted
+        }
+    });
 
     container.addEventListener('mouseout', (e) => {
-        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.style.backgroundColor !== colorInput.value){
-            const currentColor = getComputedStyle(e.target).backgroundColor;
+        /*if(e.target.style.backgroundColor.value === colorInput.value && e.target.classList.contains('grid-x') && !mouseDown){
+            e.target.style.backgroundColor = colorInput.value;
+
+        }*/
+        
+        if(e.target.classList.contains('grid-x') && !mouseDown && e.target.dataset.isPainted !== "true"){
+            /*const currentColor = getComputedStyle(e.target).backgroundColor;
             const selectedColor = colorInput.value;
-            if (currentColor !== selectedColor) {
-                const target = e.target
-                target.style.backgroundColor = "";
-            }
+            if (currentColor !== selectedColor) {*/
+                //const target = e.target
+                e.target.style.backgroundColor = "";
+            //}
         }
     })
 
-    container.addEventListener('mousedown', (e) => {
-        if(e.target.classList.contains('grid-x')){
-        const target = e.target
-        target.style.backgroundColor = colorInput.value ;
-        }
-    })  
+   
 
     
     /*divs.forEach((div) => {
@@ -167,12 +200,5 @@ container.addEventListener('mouseup', () => {
         })
 
     })*/
-    
-    container.addEventListener('mouseover', (e) => {
-        if(mouseDown && e.target.classList.contains('grid-x')){
-            const target = e.target
-            target.style.backgroundColor = colorInput.value ;
-        }
-    })
-    
+  
 
