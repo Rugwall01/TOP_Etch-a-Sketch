@@ -115,12 +115,7 @@ container.addEventListener('mousedown', (e) => {
 
     container.addEventListener('mouseout', (e) => {
         if(e.target.classList.contains('grid-x') && !mouseDown && e.target.dataset.isPainted !== "true"){
-            /*const currentColor = getComputedStyle(e.target).backgroundColor;
-            const selectedColor = colorInput.value;
-            if (currentColor !== selectedColor) {*/
-                //const target = e.target
                 e.target.style.backgroundColor = "";
-            //}
         }
     })
 
